@@ -2,7 +2,9 @@ class WordCount
 
   def self.handle(text)
     puts "Thanks for the input, here's the summary:"
-    words = text.split(/\s|\\n|\\t|\\r/)
+    text.gsub!(/\\n|\\t|\\r/, ' ')
+
+    words = text.split /\s/
     words
       .each do |word|
         next word.gsub!(/[^0-9a-zA-Z']/, '') if /\w'\w/.match(word)
